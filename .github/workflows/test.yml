@@ -26,7 +26,8 @@ jobs:
       with:
         args: |
           bash -c "
-            ls -la /home/runner/
+            ls -la ~/
             mkdir ~/.kube
             echo \"${{ secrets.KUBECONFIG }}\" > ~/.kube/config
+            ls -la ~/
           "
