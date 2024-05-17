@@ -1,12 +1,12 @@
-name: example-client-payload-action
-on: repository_dispatch
+name: This is an example
+
+on: [pull_request]
+
 jobs:
-  test:
-    name: Test
+  one:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - run: 'echo "field: ${{ github.event.client_payload.foo }}"'
-      - run: 'echo "payload: ${{ toJson(github.event.client_payload) }}"'
-      - run: echo baz
-        if: github.event.action == 'baz'
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
